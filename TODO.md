@@ -214,6 +214,7 @@ extensions», а **вшитые hidden languages**. Пользователь п�
 | Fallback captures | Preferred **справа**: `@function @function.builtin` | сделано |
 | Host «не встроен» | Вшить `jinja-host-*`, не обещать чужие extensions | сделано |
 | injection name | Built-in = `yaml`/`python`/…; bundled = `jinja-host-xml` | в коде; ждать dev-тест |
+| `brackets.scm` quotes | Грамматика отдаёт один токен `(string)`, не узлы `"`/`'` — пары кавычек убраны из query | исправлено после dev-install |
 | External scanner WASM | Проверка на этапе 1 dev-install | не подтверждено |
 | Конфликт `.j2` | README: disable одно из Jinja-extensions | сделано |
 | `commit` vs `rev` в grammar | Используем `rev` | сделано |

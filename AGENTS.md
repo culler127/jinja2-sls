@@ -142,7 +142,7 @@ The grammar has an external scanner (`raw` / `verbatim` / comments). First **Ins
 | File | Role |
 | --- | --- |
 | `queries/highlights.scm` | Jinja tokens |
-| `queries/brackets.scm` | delimiter pairs; quotes have `rainbow.exclude` |
+| `queries/brackets.scm` | delimiter pairs. Quotes are **not** listed: the grammar exposes a single `(string)` token, not anonymous `"` / `'` nodes |
 | `queries/indents.scm` | `@end` on `endif` / `endfor` / …; only **block** `{% set %}…{% endset %}` |
 | `queries/outline.scm` | `block` / `macro` |
 | `queries/overrides.scm` | `(comment) @comment.inclusive` and `(string) @string` so `not_in` works |
