@@ -1,25 +1,13 @@
 (tag_name) @tag
-
-(doctype) @tag.doctype
-
+(erroneous_end_tag_name) @tag.error
+(doctype) @constant
 (attribute_name) @attribute
-
-[
-  "\""
-  "'"
-  (attribute_value)
-] @string
-
+(attribute_value) @string
 (comment) @comment
 
-(entity) @string.special
-
-"=" @punctuation.delimiter.html
-
 [
-  "<"
-  ">"
-  "<!"
-  "</"
-  "/>"
-] @punctuation.bracket.html
+ "<"
+ ">"
+ "</"
+ "/>"
+] @punctuation.bracket

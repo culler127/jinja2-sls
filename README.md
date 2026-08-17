@@ -4,7 +4,7 @@ Zed extension for Jinja (and Nunjucks / Twig / Tera) templates, with host-langua
 
 This is a tree-sitter port of [samuelcolvin/jinjahtml-vscode](https://github.com/samuelcolvin/jinjahtml-vscode) (Better Jinja). It uses one Jinja parser ([tree-sitter-jinja-dialects](https://github.com/bennypowers/tree-sitter-jinja-dialects)) and injects the host language into `text` nodes.
 
-Language coverage matches Better Jinja 0.20.0 (plus Salt `.sls`, Nunjucks/Twig, and a separate Jinja C language). Host highlighting is included: languages that Zed already ships (YAML, Python, CSS, …) are injected into those built-in grammars; everything else is bundled as a hidden language so it works without installing extra marketplace extensions.
+Language coverage matches Better Jinja 0.20.0 (plus Salt `.sls`, Nunjucks/Twig, and a separate Jinja C language). Host highlighting is included: languages that Zed already ships (YAML, Python, CSS, …) are injected into those built-in grammars; everything else is bundled as a hidden language so it works without installing extra marketplace extensions. Hidden language names are extension-specific, while grammar names match their upstream Tree-sitter symbols as required by Zed.
 
 ## Why not `jinja2` / `html-jinja`?
 
@@ -55,6 +55,8 @@ Compound suffixes such as `.yaml.j2` win over a bare `.j2` (Zed picks the longes
 
 Jinja delimiters highlight in every associated file. First install compiles extra WASM grammars for the bundled hosts and can take a while.
 
+Bundled grammar names and revisions are aligned with the corresponding Zed language extensions where possible. This lets the hidden hosts coexist with separately installed language extensions while avoiding invalid renamed Tree-sitter symbols.
+
 VS Code maps `.c.j2` to Jinja C++; here it is Jinja C so the host injection can be C rather than C++. VS Code lists `.conf.j2` on both Properties and Nginx; here `.conf.j2` is Jinja Nginx (`.ini.j2` / `.cfg.j2` stay Properties). Cython templates use the Python grammar (same approach as injecting a host that understands the overlapping syntax).
 
 ### Jinja LaTeX delimiters
@@ -75,4 +77,6 @@ python3 scripts/generate_languages.py
 
 ## License
 
-[MIT](LICENSE)
+Extension code is [MIT](LICENSE). Bundled query sources and grammar dependencies
+are documented in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); Apache-2.0
+components are covered by [LICENSE-APACHE](LICENSE-APACHE).

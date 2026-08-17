@@ -1,3 +1,3 @@
 name = "jinja-host-php"
-grammar = "jinja-host-php"
+grammar = "php"
 hidden = true

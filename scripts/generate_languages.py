@@ -4,10 +4,10 @@
 Language list and suffixes follow samuelcolvin/jinjahtml-vscode (Better Jinja) 0.20.0.
 
 Host highlighting for languages that are not built into the Zed binary is
-provided by hidden languages (``hidden = true``) plus grammars registered
-under unique ``jinja-host-*`` keys so they never clash with official
-``grammars.xml`` / ``grammars.php`` / … entries. Highlight queries are
-copied from ``queries/hosts/`` (same sources as the official Zed extensions).
+provided by hidden languages (``hidden = true``). The hidden language names
+are unique (``jinja-host-*``), while grammar keys use the upstream parser
+names (``html``, ``xml``, etc.) required by Zed's WASM linker. Highlight
+queries are copied from ``queries/hosts/``.
 """
 
 from pathlib import Path
@@ -58,12 +58,16 @@ QUERY_FILES = (
     "textobjects.scm",
 )
 
-# Grammars that Zed does not ship in crates/languages. Unique keys avoid
-# colliding with marketplace extensions that register the same upstream repo.
-# Pins match the official Zed extensions as of 2026-08.
+# Grammars that Zed does not ship in crates/languages. `key` is the unique
+# hidden language name; `grammar` must exactly match the upstream
+# `tree_sitter_<grammar>` C symbol and therefore must be snake_case.
+# Pins match the official Zed extensions as of 2026-08. Registering the same
+# grammar name as a separately installed host extension is intentional; pins
+# are kept aligned to minimize that interoperability risk.
 BUNDLED_HOSTS = [
     {
         "key": "jinja-host-html",
+        "grammar": "html",
         "repository": "https://github.com/tree-sitter/tree-sitter-html",
         "rev": "bfa075d83c6b97cd48440b3829ab8d24a2319809",
         "highlights": "html.scm",
@@ -71,6 +75,7 @@ BUNDLED_HOSTS = [
     },
     {
         "key": "jinja-host-xml",
+        "grammar": "xml",
         "repository": "https://github.com/tree-sitter-grammars/tree-sitter-xml",
         "rev": "5000ae8f22d11fbe93939b05c1e37cf21117162d",
         "path": "xml",
@@ -78,72 +83,84 @@ BUNDLED_HOSTS = [
     },
     {
         "key": "jinja-host-ruby",
+        "grammar": "ruby",
         "repository": "https://github.com/tree-sitter/tree-sitter-ruby",
         "rev": "71bd32fb7607035768799732addba884a37a6210",
         "highlights": "ruby.scm",
     },
     {
         "key": "jinja-host-toml",
+        "grammar": "toml",
         "repository": "https://github.com/tree-sitter/tree-sitter-toml",
         "rev": "342d9be207c2dba869b9967124c679b5e6fd0ebe",
         "highlights": "toml.scm",
     },
     {
         "key": "jinja-host-latex",
+        "grammar": "latex",
         "repository": "https://github.com/497e0bdf29873/tree-sitter-latex",
         "rev": "858af2c24547c8ab9386281ece6ead6936dbc8d1",
         "highlights": "latex.scm",
     },
     {
         "key": "jinja-host-lua",
+        "grammar": "lua",
         "repository": "https://github.com/tree-sitter-grammars/tree-sitter-lua",
         "rev": "10fe0054734eec83049514ea2e718b2a56acd0c9",
         "highlights": "lua.scm",
     },
     {
         "key": "jinja-host-ini",
+        "grammar": "ini",
         "repository": "https://github.com/justinmk/tree-sitter-ini",
         "rev": "e4018b5176132b4f3c5d6e61cea383f42288d0f5",
         "highlights": "ini.scm",
     },
     {
         "key": "jinja-host-dockerfile",
+        "grammar": "dockerfile",
         "repository": "https://github.com/camdencheek/tree-sitter-dockerfile",
         "rev": "868e44ce378deb68aac902a9db68ff82d2299dd0",
         "highlights": "dockerfile.scm",
     },
     {
         "key": "jinja-host-sql",
+        "grammar": "sql",
         "repository": "https://github.com/DerekStride/tree-sitter-sql",
         "rev": "851e9cb257ba7c66cc8c14214a31c44d2f1e954e",
         "highlights": "sql.scm",
     },
     {
         "key": "jinja-host-hcl",
+        "grammar": "hcl",
         "repository": "https://github.com/tree-sitter-grammars/tree-sitter-hcl",
         "rev": "fad991865fee927dd1de5e172fb3f08ac674d914",
         "highlights": "hcl.scm",
     },
     {
         "key": "jinja-host-nginx",
+        "grammar": "nginx",
         "repository": "https://gitlab.com/joncoole/tree-sitter-nginx",
         "rev": "9413233132d1787aa8d7e8f295ee20b55ba991de",
         "highlights": "nginx.scm",
     },
     {
         "key": "jinja-host-groovy",
+        "grammar": "groovy",
         "repository": "https://github.com/murtaza64/tree-sitter-groovy",
         "rev": "86911590a8e46d71301c66468e5620d9faa5b6af",
         "highlights": "groovy.scm",
     },
     {
         "key": "jinja-host-java",
+        "grammar": "java",
         "repository": "https://github.com/tree-sitter/tree-sitter-java",
         "rev": "94703d5a6bed02b98e438d7cad1136c01a60ba2c",
         "highlights": "java.scm",
     },
     {
         "key": "jinja-host-php",
+        "grammar": "php",
         "repository": "https://github.com/tree-sitter/tree-sitter-php",
         "rev": "5b5627faaa290d89eb3d01b9bf47c3bb9e797dea",
         "path": "php",
@@ -151,6 +168,7 @@ BUNDLED_HOSTS = [
     },
     {
         "key": "jinja-host-cisco",
+        "grammar": "cisco_ios_jinja2",
         "repository": "https://github.com/dgethings/tree-sitter-cisco-ios-jinja2",
         "rev": "68003c0097e44727458f9e119480b72b2f4c4f74",
         "highlights": "cisco.scm",
@@ -164,7 +182,7 @@ version = "0.1.0"
 schema_version = 1
 authors = ["Yauhen Charniauski <culler8026@gmail.com>"]
 description = "Jinja template highlighting for Salt SLS, YAML, HTML, Markdown, Python, and more (jinjahtml-vscode port)"
-repository = "https://github.com/culler127/jinjahtml-vscode"
+repository = "https://github.com/culler127/jinja2-sls"
 '''
 
 JINJA_GRAMMAR = '''
@@ -497,7 +515,7 @@ def write_host_language(host: dict) -> None:
 
     (dest / "config.toml").write_text(
         f'''name = "{host["key"]}"
-grammar = "{host["key"]}"
+grammar = "{host["grammar"]}"
 hidden = true
 ''',
         encoding="utf-8",
@@ -529,7 +547,7 @@ def write_extension_toml() -> None:
     parts = [EXTENSION_TOML_HEADER, JINJA_GRAMMAR]
     for host in BUNDLED_HOSTS:
         block = (
-            f'\n[grammars.{host["key"]}]\n'
+            f'\n[grammars.{host["grammar"]}]\n'
             f'repository = "{host["repository"]}"\n'
             f'rev = "{host["rev"]}"\n'
         )
@@ -541,6 +559,12 @@ def write_extension_toml() -> None:
 
 def main() -> None:
     LANGS.mkdir(parents=True, exist_ok=True)
+    grammar_names = [host["grammar"] for host in BUNDLED_HOSTS]
+    if len(grammar_names) != len(set(grammar_names)):
+        raise SystemExit("duplicate bundled grammar name")
+    for grammar_name in grammar_names:
+        if not grammar_name.isidentifier() or grammar_name.lower() != grammar_name:
+            raise SystemExit(f"grammar name must be lowercase snake_case: {grammar_name}")
     wanted = {spec["dir"] for spec in LANGUAGES} | {host["key"] for host in BUNDLED_HOSTS}
     write_extension_toml()
     for spec in LANGUAGES:
