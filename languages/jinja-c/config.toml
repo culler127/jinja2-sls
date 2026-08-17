@@ -1,0 +1,13 @@
+name = "Jinja C"
+grammar = "jinja"
+path_suffixes = ["c.j2", "c.jinja", "c.jinja2"]
+tab_size = 4
+block_comment = { start = "{#", prefix = "", end = "#}", tab_size = 0 }
+brackets = [
+    { start = "{{", end = "}}", close = true, newline = false },
+    { start = "{%", end = "%}", close = true, newline = false },
+    { start = "{#", end = "#}", close = true, newline = false },
+    { start = "(", end = ")", close = true, newline = false },
+    { start = "[", end = "]", close = true, newline = true },
+    { start = "{", end = "}", close = true, newline = true },
+]

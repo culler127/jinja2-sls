@@ -1,0 +1,13 @@
+name = "Jinja TypeScript"
+grammar = "jinja"
+path_suffixes = ["ts.j2", "ts.jinja", "ts.jinja2"]
+tab_size = 2
+block_comment = { start = "{#", prefix = "", end = "#}", tab_size = 0 }
+brackets = [
+    { start = "{{", end = "}}", close = true, newline = false },
+    { start = "{%", end = "%}", close = true, newline = false },
+    { start = "{#", end = "#}", close = true, newline = false },
+    { start = "(", end = ")", close = true, newline = false },
+    { start = "[", end = "]", close = true, newline = true },
+    { start = "{", end = "}", close = true, newline = true },
+]
