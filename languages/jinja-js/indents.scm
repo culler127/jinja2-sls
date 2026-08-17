@@ -1,13 +1,14 @@
-(if_statement) @indent
-(for_statement) @indent
-(block_statement) @indent
-(macro_statement) @indent
-(call_statement) @indent
-(filter_statement) @indent
-(with_statement) @indent
-(autoescape_statement) @indent
-(set_statement) @indent
-(raw_statement) @indent
+(if_statement "endif" @end) @indent
+(for_statement "endfor" @end) @indent
+(block_statement "endblock" @end) @indent
+(macro_statement "endmacro" @end) @indent
+(call_statement "endcall" @end) @indent
+(filter_statement "endfilter" @end) @indent
+(with_statement "endwith" @end) @indent
+(autoescape_statement "endautoescape" @end) @indent
+(set_statement "endset" @end) @indent
+(raw_statement "endraw" @end) @indent
+(raw_statement "endverbatim" @end) @indent
 
 (list "]" @end) @indent
 (dict "}" @end) @indent

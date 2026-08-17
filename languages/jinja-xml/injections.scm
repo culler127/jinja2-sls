@@ -1,3 +1,3 @@
 ((text) @injection.content
- (#set! injection.language "xml")
+ (#set! injection.language "jinja-host-xml")
  (#set! injection.combined))

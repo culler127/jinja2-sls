@@ -1,0 +1,16 @@
+name = "Jinja Properties"
+grammar = "jinja"
+path_suffixes = ["properties.j2", "properties.jinja", "properties.jinja2", "cfg.j2", "cfg.jinja", "cfg.jinja2", "ini.j2", "ini.jinja", "ini.jinja2", "desktop.j2", "desktop.jinja", "desktop.jinja2", "directory.j2", "directory.jinja", "directory.jinja2"]
+tab_size = 4
+block_comment = { start = "{#", prefix = "", end = "#}", tab_size = 0 }
+autoclose_before = "}])>"
+collapsed_placeholder = "{# ... #}"
+brackets = [
+    { start = "{{", end = "}}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{%", end = "%}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{#", end = "#}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "(", end = ")", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "[", end = "]", close = true, newline = true, not_in = ["string", "comment"] },
+    { start = '"', end = '"', close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "'", end = "'", close = true, newline = false, not_in = ["string", "comment"] },
+]

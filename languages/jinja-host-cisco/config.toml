@@ -1,0 +1,3 @@
+name = "jinja-host-cisco"
+grammar = "jinja-host-cisco"
+hidden = true

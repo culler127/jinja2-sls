@@ -1,13 +1,16 @@
 name = "Jinja JSON"
 grammar = "jinja"
-path_suffixes = ["json.j2", "json.jinja", "json.jinja2"]
+path_suffixes = ["json.j2", "json.jinja", "json.jinja2", "code-workspace.j2", "code-workspace.jinja", "code-workspace.jinja2"]
 tab_size = 2
 block_comment = { start = "{#", prefix = "", end = "#}", tab_size = 0 }
+autoclose_before = "}])>"
+collapsed_placeholder = "{# ... #}"
 brackets = [
-    { start = "{{", end = "}}", close = true, newline = false },
-    { start = "{%", end = "%}", close = true, newline = false },
-    { start = "{#", end = "#}", close = true, newline = false },
-    { start = "(", end = ")", close = true, newline = false },
-    { start = "[", end = "]", close = true, newline = true },
-    { start = "{", end = "}", close = true, newline = true },
+    { start = "{{", end = "}}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{%", end = "%}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{#", end = "#}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "(", end = ")", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "[", end = "]", close = true, newline = true, not_in = ["string", "comment"] },
+    { start = '"', end = '"', close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "'", end = "'", close = true, newline = false, not_in = ["string", "comment"] },
 ]

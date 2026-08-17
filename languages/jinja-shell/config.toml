@@ -1,13 +1,16 @@
 name = "Jinja Shell"
 grammar = "jinja"
-path_suffixes = ["sh.j2", "bash.j2", "zsh.j2", "ksh.j2", "bashrc.j2", "bash_profile.j2", "bash_aliases.j2", "bash_login.j2", "bash_logout.j2", "profile.j2", "zshrc.j2", "zprofile.j2", "zlogin.j2", "zlogout.j2", "zshenv.j2", "zsh-theme.j2", "env.j2", "env.jinja", "env.jinja2"]
+path_suffixes = ["sh.j2", "bash.j2", "bashrc.j2", "bash_aliases.j2", "bash_profile.j2", "bash_login.j2", "ebuild.j2", "install.j2", "profile.j2", "bash_logout.j2", "zsh.j2", "zshrc.j2", "zprofile.j2", "zlogin.j2", "zlogout.j2", "zshenv.j2", "zsh-theme.j2", "ksh.j2", "env.jinja", "env.j2", "env.jinja2"]
 tab_size = 2
 block_comment = { start = "{#", prefix = "", end = "#}", tab_size = 0 }
+autoclose_before = "}])>"
+collapsed_placeholder = "{# ... #}"
 brackets = [
-    { start = "{{", end = "}}", close = true, newline = false },
-    { start = "{%", end = "%}", close = true, newline = false },
-    { start = "{#", end = "#}", close = true, newline = false },
-    { start = "(", end = ")", close = true, newline = false },
-    { start = "[", end = "]", close = true, newline = true },
-    { start = "{", end = "}", close = true, newline = true },
+    { start = "{{", end = "}}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{%", end = "%}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{#", end = "#}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "(", end = ")", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "[", end = "]", close = true, newline = true, not_in = ["string", "comment"] },
+    { start = '"', end = '"', close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "'", end = "'", close = true, newline = false, not_in = ["string", "comment"] },
 ]

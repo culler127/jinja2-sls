@@ -1,0 +1,3 @@
+name = "jinja-host-hcl"
+grammar = "jinja-host-hcl"
+hidden = true

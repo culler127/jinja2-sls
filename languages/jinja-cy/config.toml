@@ -1,0 +1,16 @@
+name = "Jinja Cython"
+grammar = "jinja"
+path_suffixes = ["pyx.j2", "pyx.jinja", "pyx.jinja2", "pxd.j2", "pxd.jinja", "pxd.jinja2", "pxi.j2", "pxi.jinja", "pxi.jinja2"]
+tab_size = 4
+block_comment = { start = "{#", prefix = "", end = "#}", tab_size = 0 }
+autoclose_before = "}])>"
+collapsed_placeholder = "{# ... #}"
+brackets = [
+    { start = "{{", end = "}}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{%", end = "%}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{#", end = "#}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "(", end = ")", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "[", end = "]", close = true, newline = true, not_in = ["string", "comment"] },
+    { start = '"', end = '"', close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "'", end = "'", close = true, newline = false, not_in = ["string", "comment"] },
+]

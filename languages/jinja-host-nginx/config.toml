@@ -1,0 +1,3 @@
+name = "jinja-host-nginx"
+grammar = "jinja-host-nginx"
+hidden = true

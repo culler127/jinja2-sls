@@ -1,3 +1,3 @@
 ((text) @injection.content
- (#set! injection.language "toml")
+ (#set! injection.language "jinja-host-toml")
  (#set! injection.combined))

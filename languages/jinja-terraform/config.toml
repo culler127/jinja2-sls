@@ -1,0 +1,16 @@
+name = "Jinja Terraform"
+grammar = "jinja"
+path_suffixes = ["tf.j2", "tf.jinja", "tf.jinja2", "tfvars.j2", "tfvars.jinja", "tfvars.jinja2", "hcl.j2", "hcl.jinja", "hcl.jinja2"]
+tab_size = 2
+block_comment = { start = "{#", prefix = "", end = "#}", tab_size = 0 }
+autoclose_before = "}])>"
+collapsed_placeholder = "{# ... #}"
+brackets = [
+    { start = "{{", end = "}}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{%", end = "%}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{#", end = "#}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "(", end = ")", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "[", end = "]", close = true, newline = true, not_in = ["string", "comment"] },
+    { start = '"', end = '"', close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "'", end = "'", close = true, newline = false, not_in = ["string", "comment"] },
+]
