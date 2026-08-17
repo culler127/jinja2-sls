@@ -1,0 +1,3 @@
+name = "jinja-host-php"
+grammar = "jinja-host-php"
+hidden = true

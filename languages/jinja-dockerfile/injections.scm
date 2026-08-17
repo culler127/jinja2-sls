@@ -1,3 +1,3 @@
 ((text) @injection.content
- (#set! injection.language "dockerfile")
+ (#set! injection.language "jinja-host-dockerfile")
  (#set! injection.combined))

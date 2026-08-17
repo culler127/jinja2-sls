@@ -1,0 +1,3 @@
+name = "jinja-host-lua"
+grammar = "jinja-host-lua"
+hidden = true

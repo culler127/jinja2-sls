@@ -1,13 +1,16 @@
 name = "Jinja YAML"
 grammar = "jinja"
-path_suffixes = ["yml.j2", "yaml.j2", "yml.jinja", "yaml.jinja", "yml.jinja2", "yaml.jinja2", "sls"]
+path_suffixes = ["yml.j2", "yml.jinja", "yml.jinja2", "yaml.j2", "yaml.jinja", "yaml.jinja2", "sls"]
 tab_size = 2
 block_comment = { start = "{#", prefix = "", end = "#}", tab_size = 0 }
+autoclose_before = "}])>"
+collapsed_placeholder = "{# ... #}"
 brackets = [
-    { start = "{{", end = "}}", close = true, newline = false },
-    { start = "{%", end = "%}", close = true, newline = false },
-    { start = "{#", end = "#}", close = true, newline = false },
-    { start = "(", end = ")", close = true, newline = false },
-    { start = "[", end = "]", close = true, newline = true },
-    { start = "{", end = "}", close = true, newline = true },
+    { start = "{{", end = "}}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{%", end = "%}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{#", end = "#}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "(", end = ")", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "[", end = "]", close = true, newline = true, not_in = ["string", "comment"] },
+    { start = '"', end = '"', close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "'", end = "'", close = true, newline = false, not_in = ["string", "comment"] },
 ]

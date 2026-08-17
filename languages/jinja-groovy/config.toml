@@ -1,0 +1,16 @@
+name = "Jinja Groovy"
+grammar = "jinja"
+path_suffixes = ["groovy.j2", "groovy.jinja", "groovy.jinja2"]
+tab_size = 4
+block_comment = { start = "{#", prefix = "", end = "#}", tab_size = 0 }
+autoclose_before = "}])>"
+collapsed_placeholder = "{# ... #}"
+brackets = [
+    { start = "{{", end = "}}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{%", end = "%}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "{#", end = "#}", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "(", end = ")", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "[", end = "]", close = true, newline = true, not_in = ["string", "comment"] },
+    { start = '"', end = '"', close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "'", end = "'", close = true, newline = false, not_in = ["string", "comment"] },
+]

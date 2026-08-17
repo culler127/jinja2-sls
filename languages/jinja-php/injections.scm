@@ -1,3 +1,3 @@
 ((text) @injection.content
- (#set! injection.language "php")
+ (#set! injection.language "jinja-host-php")
  (#set! injection.combined))
