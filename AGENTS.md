@@ -264,10 +264,9 @@ Do not claim nbconvert tags are parsed as Jinja until the grammar (or a fork) su
 
 ## Git status (as of 2026-08-17)
 
-`main` contains both implementation PRs through merge commit `ed06d6b`.
-The old feature branch was deleted locally and remotely. Current follow-up
-fixes (grammar key correction, notices, docs) are uncommitted; do not commit
-unless asked.
+`main` is at `839d7c4` (brackets-query fix) on `https://github.com/culler127/jinja2-sls`.
+Dev install compiled all 16 WASM grammars; Jinja languages load and highlight.
+Do not commit unless asked. Marketplace publish is a PR to `zed-industries/extensions`.
 
 ## Do not
 

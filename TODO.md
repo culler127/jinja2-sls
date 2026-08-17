@@ -175,9 +175,10 @@ extensions», а **вшитые hidden languages**. Пользователь п�
 - [x] `overrides.scm` (`comment.inclusive`, `string`) чтобы `not_in` работал
 - [x] Статические проверки: generator idempotent, весь TOML парсится, все 16
       grammar keys snake_case и подтверждены по upstream `tree_sitter_*` exports
-- [ ] Подтвердить injection names / host WASM после реального Install Dev Extension
+- [x] Подтвердить injection names / host WASM после реального Install Dev Extension
+      (языки грузятся; host highlighting работает на `.sls` / `.yaml.j2` / `.html.j2` / `.xml.j2` / `.j2`)
 - [x] Основная работа закоммичена, оба PR merged в `main`, старые ветки удалены.
-- [ ] Текущие follow-up fixes закоммитить и push — **только по просьбе**.
+- [x] Follow-up fixes (grammar keys, brackets quotes, notices) закоммичены в `main`.
 
 ---
 
@@ -185,9 +186,9 @@ extensions», а **вшитые hidden languages**. Пользователь п�
 
 - [x] `README.md`: scope vs `jinja2`/`html-jinja`, таблица ассоциаций, LICENSE
 - [ ] Скриншот в README
-- [x] `version` в `extension.toml` = `0.1.0` (тега ещё нет)
-- [ ] Git-тег `v0.1.0`, push публичного репо
-- [ ] **Локально** Install Dev Extension + реальные файлы — без этого PR закроют
+- [x] `version` в `extension.toml` = `0.1.0`
+- [x] Git-тег `v0.1.0`, push публичного репо
+- [x] **Локально** Install Dev Extension + реальные файлы (`.sls`, `.yaml.j2`, `.html.j2`, `.xml.j2`, `.j2`)
 - [ ] PR в [zed-industries/extensions](https://github.com/zed-industries/extensions)
       (**не** «положить один extension.toml»):
   1. Fork репо на **личный** GitHub-аккаунт (не org — так просят maintainers)
@@ -213,12 +214,12 @@ extensions», а **вшитые hidden languages**. Пользователь п�
 | `block_comment` массивом | Только table-форма `{ start, prefix, end, tab_size }` | сделано |
 | Fallback captures | Preferred **справа**: `@function @function.builtin` | сделано |
 | Host «не встроен» | Вшить `jinja-host-*`, не обещать чужие extensions | сделано |
-| injection name | Built-in = `yaml`/`python`/…; bundled = `jinja-host-xml` | в коде; ждать dev-тест |
+| injection name | Built-in = `yaml`/`python`/…; bundled = `jinja-host-xml` | подтверждено Install Dev Extension |
 | `brackets.scm` quotes | Грамматика отдаёт один токен `(string)`, не узлы `"`/`'` — пары кавычек убраны из query | исправлено после dev-install |
-| External scanner WASM | Проверка на этапе 1 dev-install | не подтверждено |
+| External scanner WASM | Проверка на этапе 1 dev-install | WASM собрался, языки грузятся |
 | Конфликт `.j2` | README: disable одно из Jinja-extensions | сделано |
 | `commit` vs `rev` в grammar | Используем `rev` | сделано |
-| Коллизия grammar names с host extensions | Имена hidden languages уникальны; grammar keys обязаны совпадать с C symbols, pins выровнены с официальными extensions | нужен coexistence dev-тест |
+| Коллизия grammar names с host extensions | Имена hidden languages уникальны; grammar keys обязаны совпадать с C symbols, pins выровнены с официальными extensions | HTML/dockerfile/ini/terraform уже стояли рядом; подсветка Jinja работает |
 | SQL WASM / GitLab nginx | Возможны медленная/хрупкая сборка | риск остаётся |
 | nbconvert LaTeX-делимитеры | Autoclose есть; парсер Jinja их не разбирает | задокументировано |
 | Лицензии скопированных queries | `THIRD_PARTY_NOTICES.md` + MIT/Apache-2.0 тексты; HTML заменён upstream MIT queries | сделано |
@@ -234,6 +235,6 @@ extensions», а **вшитые hidden languages**. Пользователь п�
 - [x] Host-подсветка без чужих extensions (требование пользователя)
 - [x] README с дифференциацией и таблицей ассоциаций
 - [x] `AGENTS.md` с контекстом для агентов
-- [ ] Грамматика собирается через Install Dev Extension
+- [x] Грамматика собирается через Install Dev Extension
 - [ ] Скриншот
 - [ ] PR по официальному процессу (submodule)
