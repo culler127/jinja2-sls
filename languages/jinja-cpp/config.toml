@@ -1,0 +1,13 @@
+name = "Jinja C++"
+grammar = "jinja"
+path_suffixes = ["cpp.j2", "h.j2", "hpp.j2", "cc.j2", "cxx.j2", "cpp.jinja", "h.jinja", "hpp.jinja", "cpp.jinja2", "h.jinja2", "hpp.jinja2"]
+tab_size = 4
+block_comment = { start = "{#", prefix = "", end = "#}", tab_size = 0 }
+brackets = [
+    { start = "{{", end = "}}", close = true, newline = false },
+    { start = "{%", end = "%}", close = true, newline = false },
+    { start = "{#", end = "#}", close = true, newline = false },
+    { start = "(", end = ")", close = true, newline = false },
+    { start = "[", end = "]", close = true, newline = true },
+    { start = "{", end = "}", close = true, newline = true },
+]

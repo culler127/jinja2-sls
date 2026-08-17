@@ -1,0 +1,11 @@
+id = "jinja2-sls"
+name = "Jinja2 SLS Template Support"
+version = "0.1.0"
+schema_version = 1
+authors = ["Yauhen Charniauski <culler8026@gmail.com>"]
+description = "Jinja template highlighting for Salt SLS, YAML, HTML, Markdown, Python, and more (jinjahtml-vscode port)"
+repository = "https://github.com/culler127/jinjahtml-vscode"
+
+[grammars.jinja]
+repository = "https://github.com/bennypowers/tree-sitter-jinja-dialects"
+commit = "4f832fe6feeae8c9e5963d835bec0272a8331b47"
