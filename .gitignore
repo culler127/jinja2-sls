@@ -4,3 +4,7 @@ __pycache__/
 
 # Zed compiles Tree-sitter grammars into this directory on Install Dev Extension.
 grammars/
+
+# Local agent/maintainer notes — not part of the extension.
+AGENTS.md
+TODO.md
