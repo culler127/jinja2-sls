@@ -264,9 +264,11 @@ Do not claim nbconvert tags are parsed as Jinja until the grammar (or a fork) su
 
 ## Git status (as of 2026-08-17)
 
-`main` is at `839d7c4` (brackets-query fix) on `https://github.com/culler127/jinja2-sls`.
-Dev install compiled all 16 WASM grammars; Jinja languages load and highlight.
-Do not commit unless asked. Marketplace publish is a PR to `zed-industries/extensions`.
+`main` is at `f7ee3c1` (`v0.1.0`) on `https://github.com/culler127/jinja2-sls`.
+Dev install compiled all 16 WASM grammars; highlighting works on `.sls` / `.yaml.j2` / `.html.j2` / `.xml.j2` / `.j2`.
+Registry PR: https://github.com/zed-industries/extensions/pull/7248
+(fork `culler127/extensions`, branch `add-jinja2-sls`, submodule at `f7ee3c1`).
+Do not commit unless asked. Do not force-push `main`.
 
 ## Do not
 
@@ -275,6 +277,6 @@ Do not commit unless asked. Marketplace publish is a PR to `zed-industries/exten
 - Rename grammar keys away from their upstream Tree-sitter C symbols
 - Give hidden hosts `path_suffixes`
 - Auto-close a lone `{`
-- Promise marketplace install until the user asks to publish (Zed extensions registry PR)
+- Promise marketplace availability until the registry PR is merged (https://github.com/zed-industries/extensions/pull/7248)
 - Add features unrelated to highlighting/association without being asked
 - Dump secrets; there are none in this repo

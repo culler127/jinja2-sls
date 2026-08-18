@@ -70,10 +70,10 @@ Custom Rust **не нужен** (нет LSP / debugger / MCP). Как у `html-j
       из-за global ignore)
 - [x] `THIRD_PARTY_NOTICES.md` + `LICENSE-APACHE` для скопированных host queries
 - [x] **Не** добавлять `Cargo.toml` / `src/lib.rs`
-- [ ] Dev-install: Extensions → **Install Dev Extension** (или `zed: install dev extension`)
+- [x] Dev-install: Extensions → **Install Dev Extension** (или `zed: install dev extension`)
       на каталог репо — WASM-сборка грамматики + external scanner
       (`raw` / `verbatim` / comments) **и** bundled host grammars без ошибок в log.
-      Ещё не подтверждалось на этой машине; первая сборка будет долгой (~16 WASM).
+      Подтверждено на Zed 1.15.0 (~104s, 16 WASM).
 
 ---
 
@@ -90,7 +90,8 @@ Custom Rust **не нужен** (нет LSP / debugger / MCP). Как у `html-j
       `html-injections.scm` (`<script>` → javascript, `<style>` → css)
 - [x] `brackets.scm`, `indents.scm` (`@end` на endif/endfor/…; только block `{% set %}`),
       `outline.scm`, плюс `overrides.scm` и `textobjects.scm`
-- [ ] Smoke: dev-extension + examples оригинала; syntax tree без лавины ERROR
+- [x] Smoke: Install Dev Extension; `.sls` / `.yaml.j2` / `.html.j2` / `.xml.j2` / `.j2`
+      подсвечиваются (Jinja + host). Полный прогон `examples/` оригинала не делался.
 
 ---
 
@@ -189,8 +190,8 @@ extensions», а **вшитые hidden languages**. Пользователь п�
 - [x] `version` в `extension.toml` = `0.1.0`
 - [x] Git-тег `v0.1.0`, push публичного репо
 - [x] **Локально** Install Dev Extension + реальные файлы (`.sls`, `.yaml.j2`, `.html.j2`, `.xml.j2`, `.j2`)
-- [ ] PR в [zed-industries/extensions](https://github.com/zed-industries/extensions)
-      (**не** «положить один extension.toml»):
+- [x] PR в [zed-industries/extensions](https://github.com/zed-industries/extensions/pull/7248)
+      (fork `culler127/extensions`, ветка `add-jinja2-sls`, submodule `f7ee3c1` / `v0.1.0`):
   1. Fork репо на **личный** GitHub-аккаунт (не org — так просят maintainers)
   2. `git submodule add https://github.com/<user>/<repo>.git extensions/<id>`
   3. В корневом `extensions.toml`:
@@ -202,6 +203,7 @@ extensions», а **вшитые hidden languages**. Пользователь п�
   4. `pnpm sort-extensions`
   5. В описании PR: отличие от `jinja2` / `html-jinja`, что протестировано dev-extension,
      что host-языки hidden и bundled; grammar keys совпадают с upstream symbols
+- [x] **CLA:** подписан под `culler127`; бот поставил `cla-signed`
 
 ---
 
@@ -210,7 +212,7 @@ extensions», а **вшитые hidden languages**. Пользователь п�
 | Риск | Решение | Статус |
 |---|---|---|
 | Дубликат marketplace (`jinja2`, `html-jinja`) | id `jinja2-sls` + multi-host + README | сделано |
-| PR process | submodule + `extensions.toml` + `pnpm sort-extensions` | не начато |
+| PR process | submodule + `extensions.toml` + `pnpm sort-extensions` | [PR #7248](https://github.com/zed-industries/extensions/pull/7248) |
 | `block_comment` массивом | Только table-форма `{ start, prefix, end, tab_size }` | сделано |
 | Fallback captures | Preferred **справа**: `@function @function.builtin` | сделано |
 | Host «не встроен» | Вшить `jinja-host-*`, не обещать чужие extensions | сделано |
@@ -237,4 +239,4 @@ extensions», а **вшитые hidden languages**. Пользователь п�
 - [x] `AGENTS.md` с контекстом для агентов
 - [x] Грамматика собирается через Install Dev Extension
 - [ ] Скриншот
-- [ ] PR по официальному процессу (submodule)
+- [x] PR по официальному процессу (submodule): https://github.com/zed-industries/extensions/pull/7248
